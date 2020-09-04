@@ -1,0 +1,92 @@
+title: Home
+custom_header:  
+  button_text:  
+    options: '{{ time }}<br>{{ date }}'
+views:
+  - path: default_view
+    title: Home
+    icon: mdi:home
+    badges:
+      - entity: person.alessio
+      - entity: person.lorenzo
+      - entity: person.samuele
+      - entity: person.cristina
+      - entity: sun.sun
+    cards:
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: glance
+          title: Lights on
+        filter:
+          include:
+            - domain: light
+              state: "on"
+              options:
+                tap_action:
+                  action: toggle
+              not:
+                name: /[Cc]lima/
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: glance
+          title: A/Cs on
+        filter:
+          include:
+            - domain: light
+              name: /[Cc]lima On/Off/
+              state: "on"
+              options:
+                tap_action:
+                  action: toggle
+      - type: horizontal-stack
+        title: Bulk controls
+        cards:
+          - type: button
+            entity: switch.off_tapparelle
+            name: All covers down
+            icon: mdi:window-shutter
+            tap_action:
+              action: toggle
+          - type: button
+            entity: switch.off_luci
+            name: All lights off
+            icon: mdi:lightbulb-outline
+            tap_action:
+              action: toggle
+      - type: sensor
+        name: Energy consumption
+        icon: mdi:power-plug
+        entity: sensor.carichi_globale_controllo_consumo_totale
+        graph: line
+        unit: kW
+        detail: 1
+      - type: sensor
+        name: Energy spent
+        icon: mdi:power-plug
+        entity: sensor.energy_consumption_kwh
+        graph: line
+        unit: kWh
+        detail: 1
+      - type: sensor
+        name: Daily energy spent
+        icon: mdi:power-plug
+        entity: sensor.daily_energy_consumption_kwh
+        unit: kWh
+      - type: sensor
+        name: Monthly energy spent
+        icon: mdi:power-plug
+        entity: sensor.monthly_energy_consumption_kwh
+        unit: kWh
+      - type: thermostat
+        entity: climate.thermostats
+      - type: sensor
+        name: Mean temperature
+        icon: mdi:home-thermometer
+        entity: sensor.mean_temperature
+        graph: line
+        unit: C
+        detail: 1
+      - type: weather-forecast
+        entity: weather.home

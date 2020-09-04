@@ -1,0 +1,23 @@
+- name: Home
+  latitude: !secret latitude_home
+  longitude: !secret longitude_home
+  radius: 200
+  icon: mdi:home-assistant
+
+- name: House in San Donato in Poggio
+  latitude: !secret latitude_sando
+  longitude: !secret longitude_sando
+  radius: 200
+  icon: mdi:home
+
+- name: House in Firenze
+  latitude: !secret latitude_firenze
+  longitude: !secret longitude_firenze
+  radius: 200
+  icon: mdi:home
+
+- name: University of Bologna
+  latitude: !secret latitude_bolo
+  longitude: !secret longitude_bolo
+  radius: 200
+  icon: mdi:school

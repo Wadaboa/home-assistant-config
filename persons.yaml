@@ -1,0 +1,17 @@
+- name: Alessio
+  id: alessio
+  user_id: 1b594397c7004e579ccd429fc74b6613
+  device_trackers:
+    - device_tracker.iphone_x_di_jobs
+- name: Lorenzo
+  id: lorenzo
+  user_id: a6b2d257cd684557ae87181cd514acd2
+  device_trackers:
+- name: Samuele
+  id: samuele
+  user_id: 756078d305a5400da35f13d3087a10e8
+  device_trackers:
+- name: Cristina
+  id: cristina
+  user_id: 52606da9cbc54da09bf864803751225c
+  device_trackers:

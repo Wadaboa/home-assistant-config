@@ -1,0 +1,28 @@
+- alias: Automatic theme change
+  initial_state: 'on' 
+  trigger:
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: sun.sun
+      to: above_horizon
+    - platform: state
+      entity_id: sun.sun
+      to: below_horizon
+  condition: []
+  action:
+    - service_template: frontend.set_theme
+      data_template:
+        name: >
+          {% if states.sun.sun.state == "above_horizon" %}
+            Google Light Theme
+          {% else %}
+            Google Dark Theme
+          {% endif %}
+    - delay: 00:00:02
+    - service: notify.notify
+      data_template:
+        message: >-
+          It is {{ as_timestamp(now()) | timestamp_custom("%X") }},
+          sun is {{ states.sun.sun.state | regex_replace(find='_', replace=' ')}}
+          and frontend is set.

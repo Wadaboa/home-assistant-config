@@ -1,0 +1,144 @@
+title: Night area
+views:
+  - path: overview
+    title: Overview
+    icon: mdi:cube-scan
+    cards:
+      - type: thermostat
+        entity: climate.zona_notte_termostato
+  - path: night_area_hallway
+    title: Night area hallway
+    icon: mdi:door-open
+    cards:
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Lights
+          show_header_toggle: true
+        filter:
+          include:
+            - group: group.night_area_hallway_lights
+  - path: bedroom_alessio
+    title: Alessio's bedroom
+    icon: mdi:bed
+    visible:
+      - user: 1b594397c7004e579ccd429fc74b6613
+    cards:
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Covers
+          show_header_toggle: false
+        filter:
+          include:
+            - group: group.bedroom_alessio_covers
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Lights
+          show_header_toggle: true
+        filter:
+          include:
+            - group: group.bedroom_alessio_lights
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: A/Cs
+          show_header_toggle: false
+        filter:
+          include:
+            - group: group.bedroom_alessio_ac
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Media players
+          show_header_toggle: false
+        filter:
+          include:
+            - group: group.bedroom_alessio_media
+  - path: bedroom_lorenzo
+    title: Lorenzo's bedroom
+    icon: mdi:bed
+    visible:
+      - user: a6b2d257cd684557ae87181cd514acd2
+    cards:
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Covers
+          show_header_toggle: false
+        filter:
+          include:
+            - group: group.bedroom_lorenzo_covers
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Lights
+          show_header_toggle: true
+        filter:
+          include:
+            - group: group.bedroom_lorenzo_lights
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: A/Cs
+          show_header_toggle: false
+        filter:
+          include:
+            - group: group.bedroom_lorenzo_ac
+  - path: bedroom_parents
+    title: Parents' bedroom
+    icon: mdi:bed
+    visible:
+      - user: 
+        - 756078d305a5400da35f13d3087a10e8
+        - 52606da9cbc54da09bf864803751225c
+    cards:
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Covers
+          show_header_toggle: false
+        filter:
+          include:
+            - group: group.bedroom_parents_covers
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Lights
+          show_header_toggle: true
+        filter:
+          include:
+            - group: group.bedroom_parents_lights
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: A/Cs
+          show_header_toggle: false
+        filter:
+          include:
+            - group: group.bedroom_parents_ac
+  - path: bathroom_alessio_lorenzo
+    title: Alessio/Lorenzo's bathroom
+    icon: mdi:paper-roll
+    cards:
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Lights
+          show_header_toggle: true
+        filter:
+          include:
+            - group: group.bathroom_alessio_lorenzo_lights
+  - path: rooftop
+    title: Rooftop
+    icon: mdi:home-roof
+    cards:
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Lights
+          show_header_toggle: true
+        filter:
+          include:
+            - group: group.rooftop_lights

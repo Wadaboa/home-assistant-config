@@ -1,0 +1,52 @@
+title: Basement area
+views:
+  - path: overview
+    title: Overview
+    icon: mdi:cube-scan
+    cards:
+      - type: thermostat
+        entity: climate.taverna_termostato
+  - path: basement_living_room
+    title: Basement living room
+    icon: mdi:home-floor-b
+    cards:
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Lights
+          show_header_toggle: true
+        filter:
+          include:
+            - group: group.basement_living_room_lights
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Media players
+          show_header_toggle: false
+        filter:
+          include:
+            - group: group.basement_living_room_media
+  - path: basement_kitchen
+    title: Basement kitchen
+    icon: mdi:silverware-fork-knife
+    cards:
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Lights
+          show_header_toggle: true
+        filter:
+          include:
+            - group: group.basement_kitchen_lights
+  - path: garage
+    title: Garage
+    icon: mdi:garage
+    cards:
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Lights
+          show_header_toggle: true
+        filter:
+          include:
+            - group: group.garage_lights

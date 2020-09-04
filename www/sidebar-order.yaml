@@ -1,0 +1,40 @@
+order:
+  - item: "Overview"
+    exact: true
+  - item: "Functions"
+    exact: true
+  - item: "Basement area"
+    exact: true
+  - item: "Day area"
+    exact: true
+  - item: "Night area"
+    exact: true
+  - item: "Shopping list"
+    exact: true
+  - item: "Map"
+    exact: true
+  - item: "History"
+    exact: true
+  - item: "Logbook"
+    exact: true
+    bottom: true
+    hide: true
+  - item: "HACS"
+    exact: true
+    bottom: true
+  - item: "Supervisor"
+    exact: true
+    bottom: true
+    hide: true
+  - new_item: true
+    item: Server Controls
+    href: /config/server_control
+    icon: "mdi:server"
+    bottom: true
+  - item: "Configuration"
+    exact: true
+    bottom: true
+  - item: "Developer Tools"
+    exact: true
+    href: /developer-tools/state
+    bottom: true

@@ -1,0 +1,128 @@
+title: Day area
+views:
+  - path: overview
+    title: Overview
+    icon: mdi:cube-scan
+    cards:
+      - type: thermostat
+        entity: climate.zona_giorno_termostato
+  - path: entrance
+    title: Entrance
+    icon: mdi:door-closed
+    cards:
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Lights
+          show_header_toggle: true
+        filter:
+          include:
+            - group: group.entrance_lights
+  - path: day_area_hallway
+    title: Day area hallway
+    icon: mdi:door-open
+    cards:
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Lights
+          show_header_toggle: true
+        filter:
+          include:
+            - group: group.day_area_hallway_lights
+  - path: kitchen
+    title: Kitchen
+    icon: mdi:silverware-fork-knife
+    cards:
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Covers
+          show_header_toggle: false
+        filter:
+          include:
+            - group: group.kitchen_covers
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Lights
+          show_header_toggle: true
+        filter:
+          include:
+            - group: group.kitchen_lights
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: A/Cs
+          show_header_toggle: false
+        filter:
+          include:
+            - group: group.kitchen_ac
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Media players
+          show_header_toggle: false
+        filter:
+          include:
+            - group: group.kitchen_media
+  - path: living_room
+    title: Living room
+    icon: mdi:sofa
+    cards:
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Covers
+          show_header_toggle: false
+        filter:
+          include:
+            - group: group.living_room_covers
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Lights
+          show_header_toggle: true
+        filter:
+          include:
+            - group: group.living_room_lights
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: A/Cs
+          show_header_toggle: false
+        filter:
+          include:
+            - group: group.living_room_ac
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Media players
+          show_header_toggle: false
+        filter:
+          include:
+            - group: group.living_room_media
+  - path: living_room_bathroom
+    title: Living room bathroom
+    icon: mdi:paper-roll
+    cards:
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Lights
+          show_header_toggle: true
+        filter:
+          include:
+            - group: group.living_room_bathroom_lights
+  - path: garden
+    title: Garden
+    icon: mdi:grass
+    cards:
+      - type: custom:auto-entities
+        card: 
+          type: entities
+          title: Lights
+          show_header_toggle: true
+        filter:
+          include:
+            - group: group.garden_lights

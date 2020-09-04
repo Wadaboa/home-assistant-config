@@ -1,0 +1,131 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+lovelace:
+  mode: yaml
+  resources:
+    - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
+      type: module
+    - url: /hacsfiles/custom-header/custom-header.js
+      type: module
+  dashboards:
+    ui-day-area:
+      mode: yaml
+      filename: ui-day-area.yaml
+      title: Day area
+      icon: mdi:sunglasses
+      show_in_sidebar: true
+      require_admin: false
+    ui-night-area:
+      mode: yaml
+      filename: ui-night-area.yaml
+      title: Night area
+      icon: mdi:bunk-bed
+      show_in_sidebar: true
+      require_admin: false
+    ui-basement-area:
+      mode: yaml
+      filename: ui-basement-area.yaml
+      title: Basement area
+      icon: mdi:home-floor-b
+      show_in_sidebar: true
+      require_admin: false
+    ui-functions:
+      mode: yaml
+      filename: ui-functions.yaml
+      title: Functions
+      icon: mdi:tools
+      show_in_sidebar: true
+      require_admin: false
+
+frontend:
+  themes: !include_dir_merge_named themes
+  extra_module_url:
+    - /hacsfiles/custom-sidebar/custom-sidebar.js
+
+shopping_list:
+
+# Text to speech
+tts:
+  - platform: google_translate
+    service_name: google_say
+    cache: true
+    cache_dir: tts
+
+homeassistant:
+  name: Home
+  latitude: !secret latitude_home
+  longitude: !secret longitude_home
+  elevation: 98
+  temperature_unit: C
+  time_zone: Europe/Rome
+  unit_system: metric
+
+person: !include persons.yaml
+zone: !include zones.yaml
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+sensor: !include sensors.yaml
+
+utility_meter:
+  daily_energy_consumption_kwh:
+    source: sensor.energy_consumption_kwh
+    cycle: daily
+  monthly_energy_consumption_kwh:
+    source: sensor.energy_consumption_kwh
+    cycle: monthly
+
+alexa_media:
+  accounts:
+    - email: !secret amazon_email
+      password: !secret amazon_password
+      url: amazon.it
+      include_devices:
+        - "Echo Dot di Alessio"
+
+webostv:
+  - host: 192.168.1.51
+    name: Living room TV
+    turn_on_action:
+      service: persistent_notification.create
+      data:
+        message: "Turn on action"
+    customize:
+      sources:
+        - livetv
+        - youtube
+        - netflix
+
+wake_on_lan:
+
+samsungtv:
+  - host: 192.168.1.53
+    name: Basement living room TV
+
+hacs:
+  token: !secret hacs_github_token
+  appdaemon: true
+  netdaemon: true
+  experimental: false
+
+climate:
+  - platform: climate_group
+    name: thermostats
+    temperature_unit: C
+    entities:
+      - climate.zona_giorno_termostato
+      - climate.zona_notte_termostato
+      - climate.taverna_termostato
+
+vimar_platform:
+  username: !secret vimar_user
+  password: !secret vimar_password
+  host: !secret vimar_ip
+  certificate: 
+
+logger:
+  default: warning
+  logs:
+    custom_components.vimar_platform: debug

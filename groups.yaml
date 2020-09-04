@@ -1,0 +1,378 @@
+##########################################################
+####################### DAY AREA #########################
+##########################################################
+day_area:
+  name: Day area
+  entities:
+    - group.entrance
+    - group.day_area_hallway
+    - group.kitchen
+    - group.living_room
+    - group.living_room_bathroom
+    - group.garden
+
+
+##########################################################
+####################### ENTRANCE #########################
+##########################################################
+entrance:
+  name: Entrance
+  entities:
+    - group.entrance_lights
+
+entrance_lights:
+  name: Entrance lights
+  entities:
+    - light.ingresso
+    - light.ingresso_esterno
+
+##########################################################
+################### DAY AREA HALLWAY #####################
+##########################################################
+day_area_hallway:
+  name: Day area hallway
+  entities:
+    - group.day_area_hallway_lights
+
+day_area_hallway_lights:
+  name: Day area hallway lights
+  entities:
+    - light.terra_piano_corridoio
+    - light.terra_piano_scale
+    - light.scale_taverna
+
+##########################################################
+######################## KITCHEN #########################
+##########################################################
+kitchen:
+  name: Kitchen
+  entities:
+    - group.kitchen_covers
+    - group.kitchen_lights
+    - group.kitchen_ac
+    - group.kitchen_media
+
+kitchen_covers:
+  name: Kitchen covers
+  entities:
+    - cover.cucina
+
+kitchen_lights:
+  name: Kitchen lights
+  entities:
+    - light.bancone_cucina
+    - light.tavolo_cucina
+    - light.controsoffitto_cucina
+
+kitchen_ac:
+  name: Kitchen A/Cs
+  entities:
+    - light.on_off_cucina_clima
+    - light.auto_cucina_clima
+    - light.v1_cucina_clima
+    - light.v2_cucina_clima
+    - light.v3_cucina_clima
+
+kitchen_media:
+  name: Kitchen media players
+  entities:
+    - media_player.falacast_cucina
+
+##########################################################
+####################### LIVING ROOM ######################
+##########################################################
+living_room:
+  name: Living room
+  entities:
+    - group.living_room_covers
+    - group.living_room_lights
+    - group.living_room_ac
+    - group.living_room_media
+    
+living_room_covers:
+  name: Living room covers
+  entities:
+    - cover.finestra_soggiorno
+    - cover.porta_soggiorno
+
+living_room_lights:
+  name: Living room lights
+  entities:
+    - light.lettura_soggiorno
+    - light.parete_soggiorno
+    - light.soggiorno_presa
+
+living_room_ac:
+  name: Living room A/Cs
+  entities:
+    - light.on_off_soggiorno_clima
+    - light.auto_soggiorno_clima
+    - light.v1_soggiorno_clima
+    - light.v2_soggiorno_clima
+    - light.v3_soggiorno_clima
+
+living_room_media:
+  name: Living room media players
+  entities:
+    - media_player.living_room_tv
+    - media_player.google_home_salotto
+
+##########################################################
+################## LIVING ROOM BATHROOM ##################
+##########################################################
+living_room_bathroom:
+  name: Living room bathroom
+  entities:
+    - group.living_room_bathroom_lights
+
+living_room_bathroom_lights:
+  name: Living room bathroom lights
+  entities:
+    - light.piano_terra_bagno_centrale
+    - light.piano_terra_bagno_specchio
+
+##########################################################
+######################## GARDEN ##########################
+##########################################################
+garden:
+  name: Garden
+  entities:
+    - group.garden_covers
+    - group.garden_lights
+
+garden_covers:
+  name: Garden covers
+  entities:
+    - cover.giardino_tenda
+
+garden_lights:
+  name: Garden lights
+  entities:
+    - light.giardino
+
+
+##########################################################
+###################### NIGHT AREA ########################
+##########################################################
+night_area:
+  name: Night area
+  entities:
+    - group.night_area_hallway
+    - group.bedroom_alessio
+    - group.bedroom_lorenzo
+    - group.bathroom_alessio_lorenzo
+    - group.bedroom_parents
+    - group.rooftop
+
+##########################################################
+################## NIGHT AREA HALLWAY ####################
+##########################################################
+night_area_hallway:
+  name: Night area hallway
+  entities:
+    - group.night_area_hallway_lights
+
+night_area_hallway_lights:
+  name: Night area hallway lights
+  entities:
+    - light.piano_primo_corridoio
+    - light.piano_primo_scale
+
+##########################################################
+#################### BEDROOM ALESSIO #####################
+##########################################################
+bedroom_alessio:
+  name: Alessio's bedroom
+  entities:
+    - group.bedroom_alessio_covers
+    - group.bedroom_alessio_lights
+    - group.bedroom_alessio_ac
+    - group.bedroom_alessio_media
+
+bedroom_alessio_covers:
+  name: Alessio's bedroom covers
+  entities:
+    - cover.camera_alessio
+
+bedroom_alessio_lights:
+  name: Alessio's bedroom lights
+  entities:
+    - light.alessio_camera_centrale
+    - light.alessio_camera_terrazzo
+
+bedroom_alessio_ac:
+  name: Alessio's bedroom A/Cs
+  entities:
+    - light.alessio_camera_clima_on_off
+    - light.alessio_camera_clima_auto
+    - light.alessio_camera_clima_v1
+    - light.alessio_camera_clima_v2
+    - light.alessio_camera_clima_v3
+
+bedroom_alessio_media:
+  name: Alessio's bedroom media players
+  entities:
+    - media_player.echo_dot_di_alessio
+    - media_player.apple_tv_jobs
+    - remote.apple_tv_jobs
+
+##########################################################
+#################### BEDROOM LORENZO #####################
+##########################################################
+bedroom_lorenzo:
+  name: Lorenzo's bedroom
+  entities:
+    - group.bedroom_lorenzo_covers
+    - group.bedroom_lorenzo_lights
+    - group.bedroom_lorenzo_ac
+
+bedroom_lorenzo_covers:
+  name: Lorenzo's bedroom covers
+  entities:
+    - cover.camera_lorenzo
+
+bedroom_lorenzo_lights:
+  name: Lorenzo's bedroom lights
+  entities:
+    - light.lorenzo_camera_centrale
+    - light.lorenzo_camera_terrazzo
+
+bedroom_lorenzo_ac:
+  name: Lorenzo's bedroom A/Cs
+  entities:
+    - light.lorenzo_camera_clima_on_off
+    - light.lorenzo_camera_clima_auto
+    - light.lorenzo_camera_clima_v1
+    - light.lorenzo_camera_clima_v2
+    - light.lorenzo_camera_clima_v3
+
+##########################################################
+#################### BEDROOM PARENTS #####################
+##########################################################
+bedroom_parents:
+  name: Parents' bedroom
+  entities:
+    - group.bedroom_parents_covers
+    - group.bedroom_parents_lights
+    - group.bedroom_parents_ac
+
+bedroom_parents_covers:
+  name: Parents' bedroom covers
+  entities:
+    - cover.camera_matrimoniale
+    - cover.matrimoniale_camera_bagno
+
+bedroom_parents_lights:
+  name: Parents' bedroom lights
+  entities:
+    - light.camera_matrimoniale_presa
+    - light.bagno_camera_matrimoniale_dx_specchio
+    - light.bagno_camera_matrimoniale_sx_specchio
+    - light.camera_matrimoniale_bagno_centrale
+    - light.matrimoniale_camera_terrazzo
+
+bedroom_parents_ac:
+  name: Parents' bedroom A/Cs
+  entities:
+    - light.matrimoniale_camera_clima_on_off
+    - light.matrimoniale_camera_clima_auto
+    - light.matrimoniale_camera_clima_v1
+    - light.matrimoniale_camera_clima_v2
+    - light.matrimoniale_camera_clima_v3
+
+##########################################################
+############### BATHROOM ALESSIO/LORENZO #################
+##########################################################
+bathroom_alessio_lorenzo:
+  name: Alessio/Lorenzo's bathroom
+  entities:
+    - group.bathroom_alessio_lorenzo_lights
+
+bathroom_alessio_lorenzo_lights:
+  name: Alessio/Lorenzo's bathroom lights
+  entities:
+    - light.ragazzi_bagno_centrale
+    - light.ragazzi_bagno_specchio
+
+##########################################################
+######################## ROOFTOP #########################
+##########################################################
+rooftop:
+  name: Rooftop lights
+  entities:
+    - group.rooftop_lights
+
+rooftop_lights:
+  name: Rooftop lights
+  entities:
+    - light.terrazzo_tetto
+
+##########################################################
+##################### BASEMENT AREA ######################
+##########################################################
+basement_area:
+  name: Basement area
+  entities:
+    - group.basement_living_room
+    - group.basement_kitchen
+    - group.garage
+
+##########################################################
+################## BASEMENT LIVING ROOM ##################
+##########################################################
+basement_living_room:
+  name: Basement living room
+  entities:
+    - group.basement_living_room_lights
+    - group.basement_living_room_media
+
+basement_living_room_lights:
+  name: Basement living room lights
+  entities:
+    - light.ingresso_taverna
+    - light.camino_taverna
+    - light.centrale_taverna
+    - light.generale_taverna
+
+basement_living_room_media:
+  name: Basement living room media players
+  entities:
+    - media_player.basement_living_room_tv
+
+##########################################################
+#################### BASEMENT KITCHEN ####################
+##########################################################
+basement_kitchen:
+  name: Basement kitchen
+  entities:
+    - group.basement_kitchen_lights
+
+basement_kitchen_lights:
+  name: Basement kitchen lights
+  entities:
+    - light.cucina_seminterrato
+
+##########################################################
+######################### GARAGE #########################
+##########################################################
+garage:
+  name: Garage
+  entities:
+    - group.garage_lights
+
+garage_lights:
+  name: Garage lights
+  entities:
+    - light.garage
+
+
+##########################################################
+######################## GENERIC #########################
+##########################################################
+family:
+  name: Family
+  entities:
+    - person.alessio
+    - person.lorenzo
+    - person.cristina
+    - person.samuele
