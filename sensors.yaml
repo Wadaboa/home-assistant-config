@@ -6,11 +6,18 @@
       value_template: "{{ state_attr('sensor.carichi_globale_controllo_consumo_totale', 'status_value') | float / 1000}}"
 
 - platform: integration
-  source: sensor.energy_consumption_w
+  source: sensor.carichi_globale_controllo_consumo_totale
   name: energy_consumption_kwh
-  unit_prefix: k
+  unit: kW
   unit_time: h
   round: 2
+  method: left
+
+# - platform: template
+#   sensors:
+#     energy_consumption_kwh:
+#       entity_id: sensor.energy_consumption_kwh
+#       value_template: '0.0'
 
 - platform: template
   sensors:
@@ -18,7 +25,3 @@
       friendly_name: "Mean temperature"
       unit_of_measurement: C
       value_template: "{{ state_attr('climate.thermostats', 'current_temperature')}}"
-
-- platform: time_date
-  display_options:
-    - 'time_date'

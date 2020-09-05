@@ -90,3 +90,18 @@ views:
         detail: 1
       - type: weather-forecast
         entity: weather.home
+      - type: vertical-stack
+        title: Garbage collection
+        cards:
+          - type: custom:garbage-collection-card
+            entity: sensor.bio_waste
+            icon_color: brown
+          - type: custom:garbage-collection-card
+            entity: sensor.packaging_waste_no_glass
+            icon_color: blue
+          - type: custom:garbage-collection-card
+            entity: sensor.unsorted_waste
+            icon_color: grey
+          - type: custom:garbage-collection-card
+            entity: sensor.paper_waste
+            icon_color: yellow

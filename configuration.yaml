@@ -1,6 +1,31 @@
-# Configure a default setup of Home Assistant (frontend, api, etc)
-default_config:
+##########################################################
+######################## GENERIC #########################
+##########################################################
+config:
+history:
+map:
+mobile_app:
+sun:
+system_health:
+updater:
+zeroconf:
+python_script:
+shopping_list:
+wake_on_lan:
 
+homeassistant:
+  name: Home
+  latitude: !secret latitude_home
+  longitude: !secret longitude_home
+  elevation: 98
+  temperature_unit: C
+  time_zone: Europe/Rome
+  unit_system: metric
+
+
+##########################################################
+########################## UI ############################
+##########################################################
 lovelace:
   mode: yaml
   resources:
@@ -8,6 +33,7 @@ lovelace:
       type: module
     - url: /hacsfiles/custom-header/custom-header.js
       type: module
+    - {type: js, url: '/hacsfiles/garbage-collection-card/garbage-collection-card.js'}
   dashboards:
     ui-day-area:
       mode: yaml
@@ -43,40 +69,22 @@ frontend:
   extra_module_url:
     - /hacsfiles/custom-sidebar/custom-sidebar.js
 
-shopping_list:
 
-# Text to speech
-tts:
-  - platform: google_translate
-    service_name: google_say
-    cache: true
-    cache_dir: tts
-
-homeassistant:
-  name: Home
-  latitude: !secret latitude_home
-  longitude: !secret longitude_home
-  elevation: 98
-  temperature_unit: C
-  time_zone: Europe/Rome
-  unit_system: metric
-
-person: !include persons.yaml
-zone: !include zones.yaml
-group: !include groups.yaml
+##########################################################
+#################### EXTERNAL FILES ######################
+##########################################################
 automation: !include automations.yaml
-script: !include scripts.yaml
+group: !include groups.yaml
+person: !include persons.yaml
 scene: !include scenes.yaml
+script: !include scripts.yaml
 sensor: !include sensors.yaml
+zone: !include zones.yaml
 
-utility_meter:
-  daily_energy_consumption_kwh:
-    source: sensor.energy_consumption_kwh
-    cycle: daily
-  monthly_energy_consumption_kwh:
-    source: sensor.energy_consumption_kwh
-    cycle: monthly
 
+##########################################################
+##################### MEDIA PLAYERS ######################
+##########################################################
 alexa_media:
   accounts:
     - email: !secret amazon_email
@@ -89,21 +97,29 @@ webostv:
   - host: 192.168.1.51
     name: Living room TV
     turn_on_action:
-      service: persistent_notification.create
+      service: wake_on_lan.send_magic_packet
       data:
-        message: "Turn on action"
+        mac: c8:08:e9:9e:d0:be
     customize:
       sources:
-        - livetv
-        - youtube
-        - netflix
-
-wake_on_lan:
+        - Sky
+        - DVD
+        - Soundbar
+        - Netflix
+        - Amazon Prime Video
+        - DAZN
+        - Rai Replay
+        - YouTube
+        - Browser Web
 
 samsungtv:
   - host: 192.168.1.53
     name: Basement living room TV
 
+
+##########################################################
+################### CUSTOM COMPONENTS ####################
+##########################################################
 hacs:
   token: !secret hacs_github_token
   appdaemon: true
@@ -112,7 +128,7 @@ hacs:
 
 climate:
   - platform: climate_group
-    name: thermostats
+    name: Thermostats
     temperature_unit: C
     entities:
       - climate.zona_giorno_termostato
@@ -125,7 +141,58 @@ vimar_platform:
   host: !secret vimar_ip
   certificate: 
 
+garbage_collection:
+  sensors:
+    - name: "Bio waste"
+      frequency: "weekly"
+      verbose_state: true
+      date_format: "%d/%m/%Y"
+      verbose_format: "In {days} days"
+      collection_days: 
+        - "mon"
+        - "fri"
+    - name: "Packaging waste (no glass)"
+      frequency: "weekly"
+      verbose_state: true
+      date_format: "%d/%m/%Y"
+      verbose_format: "In {days} days"
+      collection_days: "wed"
+    - name: "Unsorted waste"
+      frequency: "weekly"
+      verbose_state: true
+      date_format: "%d/%m/%Y"
+      verbose_format: "In {days} days"
+      collection_days: "tue"
+    - name: "Paper waste"
+      frequency: "weekly"
+      verbose_state: true
+      date_format: "%d/%m/%Y"
+      verbose_format: "In {days} days"
+      collection_days: "thu"
+
+
+##########################################################
+######################## LOGGERS #########################
+##########################################################
 logger:
   default: warning
   logs:
     custom_components.vimar_platform: debug
+
+
+##########################################################
+######################### EXTRA ##########################
+##########################################################
+tts:
+  - platform: google_translate
+    service_name: google_say
+    cache: true
+    cache_dir: tts
+
+utility_meter:
+  daily_energy_consumption_kwh:
+    source: sensor.energy_consumption_kwh
+    cycle: daily
+  monthly_energy_consumption_kwh:
+    source: sensor.energy_consumption_kwh
+    cycle: monthly

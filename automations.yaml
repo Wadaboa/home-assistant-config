@@ -25,4 +25,28 @@
         message: >-
           It is {{ as_timestamp(now()) | timestamp_custom("%X") }},
           sun is {{ states.sun.sun.state | regex_replace(find='_', replace=' ')}}
-          and frontend is set.
+          and frontend is set.  
+
+- alias: Update notification
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.updater
+      from: 'off'
+      to: 'on'
+  action:
+    - service: notify.notify
+      data_template:
+        message: "Home Assistant {{ state_attr('binary_sensor.updater', 'newest_version') }} is now available."
+
+- alias: Reset energy consumption
+  trigger:
+    - platform: time
+      at: '00:00:00'
+  condition:
+    - condition: template
+      value_template: "{{ now().day == 1 }}"
+  action:
+    - service: python_script.set_state
+      data_template:
+        entity_id: sensor.energy_consumption_kwh
+        state: 0.0
