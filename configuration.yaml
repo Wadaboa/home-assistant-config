@@ -196,3 +196,8 @@ utility_meter:
   monthly_energy_consumption_kwh:
     source: sensor.energy_consumption_kwh
     cycle: monthly
+
+speedtestdotnet:
+  server_id: 2710
+  scan_interval:
+    minutes: 30

@@ -55,41 +55,45 @@ views:
             icon: mdi:lightbulb-outline
             tap_action:
               action: toggle
-      - type: sensor
-        name: Energy consumption
-        icon: mdi:power-plug
-        entity: sensor.carichi_globale_controllo_consumo_totale
-        graph: line
-        unit: kW
-        detail: 1
-      - type: sensor
-        name: Energy spent
-        icon: mdi:power-plug
-        entity: sensor.energy_consumption_kwh
-        graph: line
-        unit: kWh
-        detail: 1
-      - type: sensor
-        name: Daily energy spent
-        icon: mdi:power-plug
-        entity: sensor.daily_energy_consumption_kwh
-        unit: kWh
-      - type: sensor
-        name: Monthly energy spent
-        icon: mdi:power-plug
-        entity: sensor.monthly_energy_consumption_kwh
-        unit: kWh
-      - type: thermostat
-        entity: climate.thermostats
-      - type: sensor
-        name: Mean temperature
-        icon: mdi:home-thermometer
-        entity: sensor.mean_temperature
-        graph: line
-        unit: C
-        detail: 1
-      - type: weather-forecast
-        entity: weather.home
+      - type: vertical-stack
+        title: Energy
+        cards:
+          - type: sensor
+            name: Energy consumption
+            icon: mdi:power-plug
+            entity: sensor.carichi_globale_controllo_consumo_totale
+            graph: line
+            unit: kW
+            detail: 1
+          - type: sensor
+            name: Energy spent
+            icon: mdi:power-plug
+            entity: sensor.energy_consumption_kwh
+            graph: line
+            unit: kWh
+            detail: 1
+          - type: sensor
+            name: Daily energy spent
+            icon: mdi:power-plug
+            entity: sensor.daily_energy_consumption_kwh
+            unit: kWh
+          - type: sensor
+            name: Monthly energy spent
+            icon: mdi:power-plug
+            entity: sensor.monthly_energy_consumption_kwh
+            unit: kWh
+      - type: vertical-stack
+        title: Temperature
+        cards:
+          - type: thermostat
+            entity: climate.thermostats
+          - type: sensor
+            name: Mean temperature
+            icon: mdi:home-thermometer
+            entity: sensor.mean_temperature
+            graph: line
+            unit: C
+            detail: 1
       - type: vertical-stack
         title: Garbage collection
         cards:
@@ -105,3 +109,29 @@ views:
           - type: custom:garbage-collection-card
             entity: sensor.paper_waste
             icon_color: yellow
+      - type: vertical-stack
+        title: Speedtest statistics
+        cards:
+          - type: sensor
+            name: Download rate
+            icon: mdi:download
+            entity: sensor.speedtest_download
+            graph: line
+            unit: Mbit/s
+            detail: 1
+          - type: sensor
+            name: Upload rate
+            icon: mdi:upload
+            entity: sensor.speedtest_upload
+            graph: line
+            unit: Mbit/s
+            detail: 1
+          - type: sensor
+            name: Ping rate
+            icon: mdi:weather-cloudy-arrow-right
+            entity: sensor.speedtest_ping
+            graph: line
+            unit: ms
+            detail: 1
+      - type: weather-forecast
+        entity: weather.home
