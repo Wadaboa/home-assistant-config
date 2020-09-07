@@ -135,3 +135,31 @@ views:
             detail: 1
       - type: weather-forecast
         entity: weather.home
+      - type: sensor
+        name: CPU temperature
+        icon: mdi:cpu-64-bit
+        entity: sensor.cpu_temperature
+        graph: line
+        unit: C
+        detail: 1
+      - type: sensor
+        name: CPU usage
+        icon: mdi:cpu-64-bit
+        entity: sensor.cpu_usage
+        graph: line
+        unit: "%"
+        detail: 1
+      - type: sensor
+        name: RAM usage
+        icon: mdi:memory
+        entity: sensor.ram_usage
+        graph: line
+        unit: "%"
+        detail: 1
+      - type: sensor
+        name: Storage usage
+        icon: mdi:database
+        entity: sensor.storage_usage
+        graph: line
+        unit: "%"
+        detail: 1

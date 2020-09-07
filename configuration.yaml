@@ -201,3 +201,6 @@ speedtestdotnet:
   server_id: 2710
   scan_interval:
     minutes: 30
+
+mqtt:
+  broker: 192.168.1.249

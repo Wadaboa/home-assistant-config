@@ -25,3 +25,27 @@
       friendly_name: "Mean temperature"
       unit_of_measurement: C
       value_template: "{{ state_attr('climate.thermostats', 'current_temperature')}}"
+
+- platform: mqtt
+  name: "CPU temperature"
+  state_topic: system_monitor/temperature
+  unit_of_measurement: C
+  value_template: "{{ (value | float / 1000) | round(2) }}"
+
+- platform: mqtt
+  name: "CPU usage"
+  state_topic: system_monitor/cpu-usage
+  unit_of_measurement: "%"
+  value_template: "{{ value | float | round(2) }}"
+
+- platform: mqtt
+  name: "RAM usage"
+  state_topic: system_monitor/ram-usage
+  unit_of_measurement: "%"
+  value_template: "{{ value | float | round(2) }}"
+
+- platform: mqtt
+  name: "Storage usage"
+  state_topic: system_monitor/storage-usage
+  unit_of_measurement: "%"
+  value_template: "{{ value | float | round(2) }}"
