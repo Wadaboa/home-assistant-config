@@ -3,9 +3,9 @@ custom_header:
   button_text:  
     options: '{{ time }}<br>{{ date }}'
 views:
-  - path: default_view
-    title: Home
-    icon: mdi:home
+  - path: overview
+    title: Overview
+    icon: mdi:cube-scan
     badges:
       - entity: person.alessio
       - entity: person.lorenzo
@@ -92,7 +92,7 @@ views:
             icon: mdi:home-thermometer
             entity: sensor.mean_temperature
             graph: line
-            unit: C
+            unit: "°C"
             detail: 1
       - type: vertical-stack
         title: Garbage collection
@@ -109,6 +109,12 @@ views:
           - type: custom:garbage-collection-card
             entity: sensor.paper_waste
             icon_color: yellow
+      - type: weather-forecast
+        entity: weather.home
+  - path: server
+    title: Server
+    icon: mdi:server
+    cards:
       - type: vertical-stack
         title: Speedtest statistics
         cards:
@@ -133,33 +139,70 @@ views:
             graph: line
             unit: ms
             detail: 1
-      - type: weather-forecast
-        entity: weather.home
-      - type: sensor
-        name: CPU temperature
-        icon: mdi:cpu-64-bit
-        entity: sensor.cpu_temperature
-        graph: line
-        unit: C
-        detail: 1
-      - type: sensor
-        name: CPU usage
-        icon: mdi:cpu-64-bit
-        entity: sensor.cpu_usage
-        graph: line
-        unit: "%"
-        detail: 1
-      - type: sensor
-        name: RAM usage
-        icon: mdi:memory
-        entity: sensor.ram_usage
-        graph: line
-        unit: "%"
-        detail: 1
-      - type: sensor
-        name: Storage usage
-        icon: mdi:database
-        entity: sensor.storage_usage
-        graph: line
-        unit: "%"
-        detail: 1
+      - type: vertical-stack
+        title: System monitoring
+        cards:
+          - type: gauge
+            name: CPU temperature
+            entity: sensor.cpu_temperature
+            unit: "°C"
+            min: 0
+            max: 100
+            severity:
+              green: 0
+              yellow: 45
+              red: 85
+          - type: gauge
+            name: CPU usage
+            entity: sensor.cpu_usage
+            unit: "%"
+            min: 0
+            max: 100
+            severity:
+              green: 0
+              yellow: 65
+              red: 90
+          - type: gauge
+            name: RAM usage
+            entity: sensor.ram_usage
+            unit: "%"
+            min: 0
+            max: 100
+            severity:
+              green: 0
+              yellow: 65
+              red: 90
+          - type: gauge
+            name: Storage usage
+            entity: sensor.storage_usage
+            unit: "%"
+            min: 0
+            max: 100
+            severity:
+              green: 0
+              yellow: 50
+              red: 80
+  - path: printers
+    title: Printers
+    icon: mdi:printer
+    cards:
+      - type: vertical-stack
+        title: Xerox printer status
+        cards:
+          - type: entity
+            entity: sensor.xerox_printer_page_count
+          - type: entity
+            entity: sensor.xerox_printer_cyan_toner_level
+          - type: entity
+            entity: sensor.xerox_printer_magenta_toner_level
+          - type: entity
+            entity: sensor.xerox_printer_yellow_toner_level
+          - type: entity
+            entity: sensor.xerox_printer_black_toner_level
+      - type: vertical-stack
+        title: Samsung printer status
+        cards:
+          - type: entity
+            entity: sensor.samsung_printer_page_count
+          - type: entity
+            entity: sensor.samsung_printer_black_toner_level

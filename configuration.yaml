@@ -94,12 +94,12 @@ alexa_media:
         - "Echo Dot di Alessio"
 
 webostv:
-  - host: 192.168.1.51
+  - host: !secret living_room_tv
     name: Living room TV
     turn_on_action:
       service: wake_on_lan.send_magic_packet
       data:
-        mac: c8:08:e9:9e:d0:be
+        mac: !secret living_room_mac
     customize:
       sources:
         - Sky
@@ -113,7 +113,7 @@ webostv:
         - Browser Web
 
 samsungtv:
-  - host: 192.168.1.53
+  - host: !secret basement_living_room_tv_ip
     name: Basement living room TV
 
 
@@ -203,4 +203,4 @@ speedtestdotnet:
     minutes: 30
 
 mqtt:
-  broker: 192.168.1.249
+  broker: !secret mqtt_broker_ip
