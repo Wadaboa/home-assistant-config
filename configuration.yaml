@@ -34,6 +34,10 @@ lovelace:
     - url: /hacsfiles/custom-header/custom-header.js
       type: module
     - {type: js, url: '/hacsfiles/garbage-collection-card/garbage-collection-card.js'}
+    - url: /hacsfiles/spotify-card/spotify-card.js
+      type: module
+    - url: /hacsfiles/circle-sensor-card/circle-sensor-card.js
+      type: module
   dashboards:
     ui-day-area:
       mode: yaml
@@ -54,13 +58,6 @@ lovelace:
       filename: ui-basement-area.yaml
       title: Basement area
       icon: mdi:home-floor-b
-      show_in_sidebar: true
-      require_admin: false
-    ui-functions:
-      mode: yaml
-      filename: ui-functions.yaml
-      title: Functions
-      icon: mdi:tools
       show_in_sidebar: true
       require_admin: false
 
@@ -204,3 +201,11 @@ speedtestdotnet:
 
 mqtt:
   broker: !secret mqtt_broker_ip
+
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
+
+spotcast:
+  sp_dc: !secret sp_dc
+  sp_key: !secret sp_key

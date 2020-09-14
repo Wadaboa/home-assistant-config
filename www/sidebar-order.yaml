@@ -1,8 +1,6 @@
 order:
   - item: "Overview"
     exact: true
-  - item: "Functions"
-    exact: true
   - item: "Basement area"
     exact: true
   - item: "Day area"

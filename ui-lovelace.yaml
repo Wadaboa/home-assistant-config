@@ -66,13 +66,6 @@ views:
             unit: kW
             detail: 1
           - type: sensor
-            name: Energy spent
-            icon: mdi:power-plug
-            entity: sensor.energy_consumption_kwh
-            graph: line
-            unit: kWh
-            detail: 1
-          - type: sensor
             name: Daily energy spent
             icon: mdi:power-plug
             entity: sensor.daily_energy_consumption_kwh
@@ -191,18 +184,117 @@ views:
         cards:
           - type: entity
             entity: sensor.xerox_printer_page_count
-          - type: entity
-            entity: sensor.xerox_printer_cyan_toner_level
-          - type: entity
-            entity: sensor.xerox_printer_magenta_toner_level
-          - type: entity
-            entity: sensor.xerox_printer_yellow_toner_level
-          - type: entity
-            entity: sensor.xerox_printer_black_toner_level
+            icon: mdi:book-open-page-variant
+          - type: horizontal-stack
+            title: Toner levels
+            cards:
+              - type: custom:circle-sensor-card
+                entity: sensor.xerox_printer_cyan_toner_level
+                show_card: false
+                fill: "#ecf0f1"
+                stroke_width: 10
+                stroke_color: cyan
+                units: '%'
+                show_max: false
+                font_style:
+                  font-size: 1.5em
+              - type: custom:circle-sensor-card
+                entity: sensor.xerox_printer_magenta_toner_level
+                show_card: false
+                fill: "#ecf0f1"
+                stroke_width: 10
+                stroke_color: magenta
+                units: '%'
+                show_max: false
+                font_style:
+                  font-size: 1.5em
+              - type: custom:circle-sensor-card
+                entity: sensor.xerox_printer_yellow_toner_level
+                show_card: false
+                fill: "#ecf0f1"
+                stroke_width: 10
+                stroke_color: yellow
+                units: '%'
+                show_max: false
+                font_style:
+                  font-size: 1.5em
+              - type: custom:circle-sensor-card
+                entity: sensor.xerox_printer_black_toner_level
+                show_card: false
+                fill: "#ecf0f1"
+                stroke_width: 10
+                stroke_color: black
+                units: '%'
+                show_max: false
+                font_style:
+                  font-size: 1.5em
       - type: vertical-stack
         title: Samsung printer status
         cards:
           - type: entity
             entity: sensor.samsung_printer_page_count
-          - type: entity
-            entity: sensor.samsung_printer_black_toner_level
+            icon: mdi:book-open-page-variant
+          - type: horizontal-stack
+            title: Toner levels
+            cards:
+              - type: custom:circle-sensor-card
+                entity: sensor.zero_sensor
+                show_card: false
+                fill: "#c0392b"
+                stroke_width: 10
+                stroke_color: cyan
+                units: '%'
+                show_max: false
+                font_style:
+                  font-size: 1.5em
+              - type: custom:circle-sensor-card
+                entity: sensor.zero_sensor
+                show_card: false
+                fill: "#c0392b"
+                stroke_width: 10
+                stroke_color: magenta
+                units: '%'
+                show_max: false
+                font_style:
+                  font-size: 1.5em
+              - type: custom:circle-sensor-card
+                entity: sensor.zero_sensor
+                show_card: false
+                fill: "#c0392b"
+                stroke_width: 10
+                stroke_color: yellow
+                units: '%'
+                show_max: false
+                font_style:
+                  font-size: 1.5em
+              - type: custom:circle-sensor-card
+                entity: sensor.samsung_printer_black_toner_level
+                show_card: false
+                fill: "#ecf0f1"
+                stroke_width: 10
+                stroke_color: black
+                units: '%'
+                show_max: false
+                font_style:
+                  font-size: 1.5em
+  - path: media
+    title: Media players
+    icon: mdi:popcorn
+    cards:
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          title: Media players
+        filter:
+          include:
+            - domain: media_player
+          exclude:
+            - name: /Spotify/
+      - type: "custom:spotify-card"
+        name: Playlists
+        account: "default"
+        country_code: IT
+        limit: 9
+        display_style: Grid
+        grid_covers_per_row: 3
