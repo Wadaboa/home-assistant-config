@@ -175,6 +175,25 @@ views:
               green: 0
               yellow: 50
               red: 80
+      - type: custom:battery-state-card
+        title: "Phones battery levels"
+        sort_by_level: "desc"
+        thresholds:
+          - value: 10
+            color: "#c0392b"
+          - value: 20
+            color: "#f39c12"
+          - value: 40
+            color: "#f1c40f"
+          - value: 60
+            color: "#2ecc71"
+        charging_state:
+          attribute:
+            name: "Battery State"
+            value: "Charging"
+        entities:
+          - entity: sensor.iphone_x_di_jobs_battery_level
+            name: "Alessio's iPhone X"
   - path: printers
     title: Printers
     icon: mdi:printer
@@ -296,5 +315,5 @@ views:
         account: "default"
         country_code: IT
         limit: 9
-        display_style: Grid
+        # display_style: Grid
         grid_covers_per_row: 3

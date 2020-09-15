@@ -38,6 +38,8 @@ lovelace:
       type: module
     - url: /hacsfiles/circle-sensor-card/circle-sensor-card.js
       type: module
+    - url: /hacsfiles/battery-state-card/battery-state-card.js
+      type: module
   dashboards:
     ui-day-area:
       mode: yaml
@@ -112,6 +114,14 @@ webostv:
 samsungtv:
   - host: !secret basement_living_room_tv_ip
     name: Basement living room TV
+
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
+
+spotcast:
+  sp_dc: !secret sp_dc
+  sp_key: !secret sp_key
 
 
 ##########################################################
@@ -201,11 +211,3 @@ speedtestdotnet:
 
 mqtt:
   broker: !secret mqtt_broker_ip
-
-spotify:
-  client_id: !secret spotify_client_id
-  client_secret: !secret spotify_client_secret
-
-spotcast:
-  sp_dc: !secret sp_dc
-  sp_key: !secret sp_key
