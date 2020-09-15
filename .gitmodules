@@ -1,0 +1,3 @@
+[submodule "vimar_platform"]
+	path = custom_components/vimar_platform
+	url = git://github.com/h4de5/home-assistant-vimar.git
