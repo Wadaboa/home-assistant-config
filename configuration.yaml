@@ -200,9 +200,24 @@ utility_meter:
   daily_energy_consumption_kwh:
     source: sensor.energy_consumption_kwh
     cycle: daily
+    tariffs:
+      - f1
+      - f2
+      - f3
   monthly_energy_consumption_kwh:
     source: sensor.energy_consumption_kwh
     cycle: monthly
+    tariffs:
+      - f1
+      - f2
+      - f3
+  yearly_energy_consumption_kwh:
+    source: sensor.energy_consumption_kwh
+    cycle: yearly
+    tariffs:
+      - f1
+      - f2
+      - f3
 
 speedtestdotnet:
   server_id: 2710

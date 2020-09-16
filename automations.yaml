@@ -1,3 +1,114 @@
+##########################################################
+######################### ENERGY #########################
+##########################################################
+- alias: Change utility tariffs to F1
+  trigger:
+    - platform: time
+      at:
+        - '08:00:00'
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+        - utility_meter.daily_energy_consumption_kwh
+        - utility_meter.monthly_energy_consumption_kwh
+        - utility_meter.yearly_energy_consumption_kwh
+      tariff: f1
+
+- alias: Change utility tariffs to F2 on weekdays
+  trigger:
+    - platform: time
+      at: 
+        - '07:00:00'
+        - '19:00:00'
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+        - utility_meter.daily_energy_consumption_kwh
+        - utility_meter.monthly_energy_consumption_kwh
+        - utility_meter.yearly_energy_consumption_kwh
+      tariff: f2
+
+- alias: Change utility tariffs to F2 on saturday
+  trigger:
+    - platform: time
+      at: 
+        - '07:00:00'
+  condition:
+    - condition: time
+      weekday:
+        - sat
+  action:
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+        - utility_meter.daily_energy_consumption_kwh
+        - utility_meter.monthly_energy_consumption_kwh
+        - utility_meter.yearly_energy_consumption_kwh
+      tariff: f2
+
+- alias: Change utility tariffs to F3 on weekdays and saturday
+  trigger:
+    - platform: time
+      at: 
+        - '23:00:00'
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+  action:
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+        - utility_meter.daily_energy_consumption_kwh
+        - utility_meter.monthly_energy_consumption_kwh
+        - utility_meter.yearly_energy_consumption_kwh
+      tariff: f3
+
+- alias: Change utility tariffs to F3 on sunday
+  trigger:
+    - platform: time
+      at: 
+        - '00:00:00'
+  condition:
+    - condition: time
+      weekday:
+        - sun
+  action:
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+        - utility_meter.daily_energy_consumption_kwh
+        - utility_meter.monthly_energy_consumption_kwh
+        - utility_meter.yearly_energy_consumption_kwh
+      tariff: f3
+
+
+##########################################################
+########################## EXTRA #########################
+##########################################################
 - alias: Automatic theme change
   initial_state: 'on' 
   trigger:
@@ -37,16 +148,3 @@
     - service: notify.notify
       data_template:
         message: "Home Assistant {{ state_attr('binary_sensor.updater', 'newest_version') }} is now available."
-
-- alias: Reset energy consumption
-  trigger:
-    - platform: time
-      at: '00:00:00'
-  condition:
-    - condition: template
-      value_template: "{{ now().day == 1 }}"
-  action:
-    - service: python_script.set_state
-      data_template:
-        entity_id: sensor.energy_consumption_kwh
-        state: 0.0

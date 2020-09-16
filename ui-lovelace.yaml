@@ -75,6 +75,29 @@ views:
             icon: mdi:power-plug
             entity: sensor.monthly_energy_consumption_kwh
             unit: kWh
+          - type: sensor
+            name: Yearly energy spent
+            icon: mdi:power-plug
+            entity: sensor.yearly_energy_consumption_kwh
+            unit: kWh
+      - type: vertical-stack
+        title: Energy cost
+        cards:
+          - type: sensor
+            name: Daily energy cost
+            icon: mdi:currency-eur
+            entity: sensor.daily_energy_cost
+            unit: "€"
+          - type: sensor
+            name: Monthly energy cost
+            icon: mdi:currency-eur
+            entity: sensor.monthly_energy_cost
+            unit: "€"
+          - type: sensor
+            name: Yearly energy cost
+            icon: mdi:currency-eur
+            entity: sensor.yearly_energy_cost
+            unit: "€"
       - type: vertical-stack
         title: Temperature
         cards:

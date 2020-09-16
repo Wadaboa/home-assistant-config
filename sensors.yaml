@@ -16,6 +16,57 @@
   round: 2
   method: left
 
+- platform: template
+  sensors:
+    daily_energy_consumption_kwh:
+      friendly_name: "Daily energy consumption"
+      unit_of_measurement: kWh
+      value_template: >-
+        {{(states('sensor.daily_energy_consumption_kwh_f1') | float) + 
+          (states('sensor.daily_energy_consumption_kwh_f2') | float) + 
+          (states('sensor.daily_energy_consumption_kwh_f3') | float)}}
+
+- platform: template
+  sensors:
+    monthly_energy_consumption_kwh:
+      friendly_name: "Monthly energy consumption"
+      unit_of_measurement: kWh
+      value_template: >-
+        {{(states('sensor.monthly_energy_consumption_kwh_f1') | float) + 
+          (states('sensor.monthly_energy_consumption_kwh_f2') | float) + 
+          (states('sensor.monthly_energy_consumption_kwh_f3') | float)}}
+
+- platform: template
+  sensors:
+    yearly_energy_consumption_kwh:
+      friendly_name: "Yearly energy consumption"
+      unit_of_measurement: kWh
+      value_template: >-
+        {{(states('sensor.yearly_energy_consumption_kwh_f1') | float) + 
+          (states('sensor.yearly_energy_consumption_kwh_f2') | float) + 
+          (states('sensor.yearly_energy_consumption_kwh_f3') | float)}}
+
+- platform: template
+  sensors:
+    daily_energy_cost:
+      friendly_name: "Daily energy cost"
+      unit_of_measurement: "€"
+      value_template: "{{ ((states('sensor.daily_energy_consumption_kwh_f1') | float) * 0.09) | round(2) }}"
+
+- platform: template
+  sensors:
+    monthly_energy_cost:
+      friendly_name: "Monthly energy cost"
+      unit_of_measurement: "€"
+      value_template: "{{ ((states('sensor.monthly_energy_consumption_kwh_f1') | float) * 0.09) | round(2) }}"
+
+- platform: template
+  sensors:
+    yearly_energy_cost:
+      friendly_name: "Yearly energy cost"
+      unit_of_measurement: "€"
+      value_template: "{{ ((states('sensor.yearly_energy_consumption_kwh_f1') | float) * 0.09) | round(2) }}"
+
 
 ##########################################################
 ###################### TEMPERATURE #######################
@@ -25,7 +76,7 @@
     mean_temperature:
       friendly_name: "Mean temperature"
       unit_of_measurement: C
-      value_template: "{{ state_attr('climate.thermostats', 'current_temperature')}}"
+      value_template: "{{ state_attr('climate.thermostats', 'current_temperature') }}"
 
 
 ##########################################################
