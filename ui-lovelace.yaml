@@ -240,6 +240,7 @@ views:
                 show_max: false
                 font_style:
                   font-size: 1.5em
+                  color: black
               - type: custom:circle-sensor-card
                 entity: sensor.xerox_printer_magenta_toner_level
                 show_card: false
@@ -250,6 +251,7 @@ views:
                 show_max: false
                 font_style:
                   font-size: 1.5em
+                  color: black
               - type: custom:circle-sensor-card
                 entity: sensor.xerox_printer_yellow_toner_level
                 show_card: false
@@ -260,6 +262,7 @@ views:
                 show_max: false
                 font_style:
                   font-size: 1.5em
+                  color: black
               - type: custom:circle-sensor-card
                 entity: sensor.xerox_printer_black_toner_level
                 show_card: false
@@ -270,6 +273,7 @@ views:
                 show_max: false
                 font_style:
                   font-size: 1.5em
+                  color: black
       - type: vertical-stack
         title: Samsung printer status
         cards:
@@ -289,6 +293,7 @@ views:
                 show_max: false
                 font_style:
                   font-size: 1.5em
+                  color: black
               - type: custom:circle-sensor-card
                 entity: sensor.zero_sensor
                 show_card: false
@@ -299,6 +304,7 @@ views:
                 show_max: false
                 font_style:
                   font-size: 1.5em
+                  color: black
               - type: custom:circle-sensor-card
                 entity: sensor.zero_sensor
                 show_card: false
@@ -309,6 +315,7 @@ views:
                 show_max: false
                 font_style:
                   font-size: 1.5em
+                  color: black
               - type: custom:circle-sensor-card
                 entity: sensor.samsung_printer_black_toner_level
                 show_card: false
@@ -319,6 +326,7 @@ views:
                 show_max: false
                 font_style:
                   font-size: 1.5em
+                  color: black
   - path: media
     title: Media players
     icon: mdi:popcorn

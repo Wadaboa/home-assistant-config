@@ -12,6 +12,7 @@ zeroconf:
 python_script:
 shopping_list:
 wake_on_lan:
+media_source:
 
 homeassistant:
   name: Home
