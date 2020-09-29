@@ -148,3 +148,39 @@
     - service: notify.notify
       data_template:
         message: "Home Assistant {{ state_attr('binary_sensor.updater', 'newest_version') }} is now available."
+
+- alias: Garbage collection notification
+  trigger:
+    - platform: time
+      at: 
+        - '21:00:00'
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: sensor.bio_waste
+        state: 'tomorrow'
+      - condition: state
+        entity_id: sensor.packaging_waste_no_glass
+        state: 'tomorrow'
+      - condition: state
+        entity_id: sensor.unsorted_waste
+        state: 'tomorrow'
+      - condition: state
+        entity_id: sensor.paper_waste
+        state: 'tomorrow'
+  variables:
+    waste: >-
+      {% if states.sensor.bio_waste.state == 'tomorrow' %} 
+        {{ states.sensor.bio_waste.name }} 
+      {% elif states.sensor.packaging_waste_no_glass.state == 'tomorrow' %}
+        {{ states.sensor.packaging_waste_no_glass.name }}
+      {% elif states.sensor.unsorted_waste.state == 'tomorrow' %}
+        {{ states.sensor.unsorted_waste.name }}
+      {% elif states.sensor.paper_waste.state == 'tomorrow' %}
+        {{ states.sensor.paper_waste.name }}
+      {% endif %}
+  action:
+    - service: notify.notify
+      data_template:
+        message: 'Did you put the "{{ waste | lower }}" garbage outside?'
