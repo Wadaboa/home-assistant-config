@@ -14,6 +14,9 @@ order:
     exact: true
   - item: "History"
     exact: true
+  - item: "Media Browser"
+    exact: true
+    hide: true
   - item: "Logbook"
     exact: true
     bottom: true

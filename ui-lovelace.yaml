@@ -13,50 +13,52 @@ views:
       - entity: person.cristina
       - entity: sun.sun
     cards:
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: glance
-          title: Lights on
-        filter:
-          include:
-            - domain: light
-              state: "on"
-              options:
-                tap_action:
-                  action: toggle
-              not:
-                name: /[Cc]lima/
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: glance
-          title: A/Cs on
-        filter:
-          include:
-            - domain: light
-              name: /[Cc]lima On/Off/
-              state: "on"
-              options:
-                tap_action:
-                  action: toggle
-      - type: horizontal-stack
+      - type: vertical-stack
         title: Bulk controls
         cards:
-          - type: button
-            entity: switch.off_tapparelle
-            name: All covers down
-            icon: mdi:window-shutter
-            tap_action:
-              action: toggle
-          - type: button
-            entity: switch.off_luci
-            name: All lights off
-            icon: mdi:lightbulb-outline
-            tap_action:
-              action: toggle
+          - type: horizontal-stack
+            cards:
+              - type: button
+                entity: switch.off_tapparelle
+                name: All covers down
+                icon: mdi:window-shutter
+                tap_action:
+                  action: toggle
+              - type: button
+                entity: switch.off_luci
+                name: All lights off
+                icon: mdi:lightbulb-outline
+                tap_action:
+                  action: toggle
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: glance
+              title: Lights on
+            filter:
+              include:
+                - domain: light
+                  state: "on"
+                  options:
+                    tap_action:
+                      action: toggle
+                  not:
+                    name: /[Cc]lima/
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: glance
+              title: A/Cs on
+            filter:
+              include:
+                - domain: light
+                  name: /[Cc]lima On/Off/
+                  state: "on"
+                  options:
+                    tap_action:
+                      action: toggle
       - type: vertical-stack
-        title: Energy
+        title: Energy consumption
         cards:
           - type: sensor
             name: Energy consumption
@@ -110,6 +112,8 @@ views:
             graph: line
             unit: "°C"
             detail: 1
+          - type: weather-forecast
+            entity: weather.home
       - type: vertical-stack
         title: Garbage collection
         cards:
@@ -125,8 +129,6 @@ views:
           - type: custom:garbage-collection-card
             entity: sensor.paper_waste
             icon_color: yellow
-      - type: weather-forecast
-        entity: weather.home
   - path: server
     title: Server
     icon: mdi:server
@@ -340,7 +342,16 @@ views:
           include:
             - domain: media_player
           exclude:
-            - name: /Spotify/
+            - name: /[Ss]potify/
+            - name: /[Pp]lex/
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          title: Plex sources
+        filter:
+          include:
+            - entity_id: /media_player.plex/
       - type: "custom:spotify-card"
         name: Playlists
         account: "default"
